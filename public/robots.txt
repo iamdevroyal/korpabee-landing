@@ -1,105 +1,98 @@
-# https://www.robotstxt.org/robotstxt.html
 # Robots.txt for KorpaBee Main Platform (https://korpabee.com)
 
 # ── General Search Engine Crawlers ──────────────────────────────────────────
 User-agent: *
 Allow: /$
 Allow: /index.html
-Allow: /login
-Allow: /register
 Allow: /privacy
 Allow: /terms
 Allow: /disclaimer
 Allow: /llms.txt
-
-# Disallow authenticated app routes to optimize crawl budget
+Allow: /llms-full.txt
+Allow: /sitemap.xml
 Disallow: /feed
 Disallow: /buzz
 Disallow: /buzzhives
 Disallow: /chat
 Disallow: /profile
-Disallow: /discover
-Disallow: /connections
-Disallow: /ppa
-Disallow: /jobs
 Disallow: /me/
-Disallow: /housing
-Disallow: /events
-Disallow: /notifications
-Disallow: /business
-Disallow: /onboarding
 Disallow: /wallet
-Disallow: /gigs
-Disallow: /subscription
 
-# ── AI Search Crawlers & Indexers ─────────────────────────────────────────
+# ── OpenAI / ChatGPT Crawlers ──────────────────────────────────────────────
 User-agent: GPTBot
 Allow: /$
-Allow: /login
-Allow: /register
 Allow: /privacy
 Allow: /terms
 Allow: /disclaimer
 Allow: /llms.txt
-Disallow: /
+Allow: /llms-full.txt
+Allow: /sitemap.xml
 
 User-agent: ChatGPT-User
 Allow: /$
-Allow: /login
-Allow: /register
 Allow: /privacy
 Allow: /terms
 Allow: /disclaimer
 Allow: /llms.txt
-Disallow: /
-
-User-agent: ClaudeBot
-Allow: /$
-Allow: /login
-Allow: /register
-Allow: /privacy
-Allow: /terms
-Allow: /disclaimer
-Allow: /llms.txt
-Disallow: /
-
-User-agent: Claude-Web
-Allow: /$
-Allow: /login
-Allow: /register
-Allow: /privacy
-Allow: /terms
-Allow: /disclaimer
-Allow: /llms.txt
-Disallow: /
-
-User-agent: PerplexityBot
-Allow: /$
-Allow: /login
-Allow: /register
-Allow: /privacy
-Allow: /terms
-Allow: /disclaimer
-Allow: /llms.txt
-Disallow: /
+Allow: /llms-full.txt
+Allow: /sitemap.xml
 
 User-agent: OAI-SearchBot
 Allow: /$
-Allow: /login
-Allow: /register
 Allow: /privacy
 Allow: /terms
 Allow: /disclaimer
 Allow: /llms.txt
-Disallow: /
+Allow: /llms-full.txt
+Allow: /sitemap.xml
 
+# ── Anthropic / Claude Crawlers ────────────────────────────────────────────
+User-agent: ClaudeBot
+Allow: /$
+Allow: /privacy
+Allow: /terms
+Allow: /disclaimer
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /sitemap.xml
+
+User-agent: Claude-Web
+Allow: /$
+Allow: /privacy
+Allow: /terms
+Allow: /disclaimer
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /sitemap.xml
+
+# ── Perplexity AI Crawler ──────────────────────────────────────────────────
+User-agent: PerplexityBot
+Allow: /$
+Allow: /privacy
+Allow: /terms
+Allow: /disclaimer
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /sitemap.xml
+
+# ── Google & Apple AI Crawlers ─────────────────────────────────────────────
 User-agent: Google-Extended
 Allow: /$
 Allow: /privacy
 Allow: /terms
 Allow: /disclaimer
 Allow: /llms.txt
-Disallow: /
+Allow: /llms-full.txt
+Allow: /sitemap.xml
+
+User-agent: GoogleOther
+Allow: /$
+Allow: /privacy
+Allow: /terms
+Allow: /disclaimer
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /sitemap.xml
 
 User-agent: Applebot-Extended
 Allow: /$
@@ -107,6 +100,18 @@ Allow: /privacy
 Allow: /terms
 Allow: /disclaimer
 Allow: /llms.txt
-Disallow: /
+Allow: /llms-full.txt
+Allow: /sitemap.xml
 
+# ── Meta AI Crawler ───────────────────────────────────────────────────────
+User-agent: Meta-ExternalAgent
+Allow: /$
+Allow: /privacy
+Allow: /terms
+Allow: /disclaimer
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /sitemap.xml
+
+# ── Sitemap Index Location ─────────────────────────────────────────────────
 Sitemap: https://korpabee.com/sitemap.xml

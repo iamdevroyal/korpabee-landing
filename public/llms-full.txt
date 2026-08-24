@@ -1,0 +1,67 @@
+# KorpaBee Platform - Comprehensive Product Specifications & Capabilities
+
+> KorpaBee is Nigeria's premier digital community platform, opportunity network, housing marketplace, and Place of Primary Assignment (PPA) review directory built specifically to empower National Youth Service Corps (NYSC) corps members.
+
+---
+
+## Executive Summary
+KorpaBee supports over 1 million Nigerian youth through their mandatory service year. The platform addresses core challenges faced by corps members:
+1. **PPA Transparency**: Lack of reliable employer information during orientation camp call-up posting.
+2. **Housing Security**: High accommodation cost, agent scams, and difficulty finding compatible corper roommates.
+3. **Financial Security**: Allowance management, cooperative savings (Ajo), and escrow protection.
+4. **Career & Skills**: Transition from service year to professional workforce via tailored CV tools, remote job boards, and micro-gigs.
+5. **Community Connection**: Auto-provisioned platoon, batch, and state group channels upon verified KYC scan.
+
+---
+
+## Key Modules & Platform Features
+
+### 1. PPA Directory & Ratings
+- **Description**: Anonymous review platform where past and current corps members post employer ratings, monthly allowance top-ups, work hours, lodging provisions, and relocation feasibility.
+- **Search Capabilities**: Filter PPAs by state, LGA, industry, salary range, and corper satisfaction score.
+- **Trust Mechanism**: Submissions undergo automated content checks and community flag moderation.
+
+### 2. Housing & Roommate Matching
+- **GPS Proximity Matching**: Utilizes Haversine geolocation algorithms to find verified apartment listings within walking or short transit distance to PPA locations.
+- **Roommate Compatibility Survey**: Matches corps members based on budget, lifestyle, cleanliness, work schedule, and platoon background.
+- **Scam Prevention**: Verified landlord badge requirements and corper-to-corper housing transfer options.
+
+### 3. NYSC Call-Up KYC Verification & Peer Graph
+- **Verification Workflow**: Corps members scan the QR code on their official NYSC Call-Up letter and upload a live selfie.
+- **Auto-Enrolment**: Upon successful verification, the system auto-discovers state deployment, batch (e.g., Stream I/II), and platoon numbers.
+- **Community Group Chats**: Automatically adds corps members to official State, Batch, and Platoon realtime WebSockets channels.
+
+### 4. Jobs Board & AI-Assisted CV Builder
+- **Corper-Specific Jobs**: Verified job listings covering internships, graduate trainee programs, remote freelancing, and entry-level positions.
+- **CV Builder**: In-app template builder optimized for fresh Nigerian graduates, highlighting CDS achievements, skills, and degree qualifications.
+- **One-Click Application**: Streamlined single-tap application delivery to verified employers.
+
+### 5. Digital Wallet & Ajo Escrow System
+- **Digital Wallet**: Integrated clearance tracking, transaction history, airtime/data top-ups, and peer transfers.
+- **Ajo Group Savings**: Escrow-backed rotational group contribution cycles allowing corpers to save towards rent or business ideas safely.
+- **Banking Partners**: Partnered with PCI-DSS compliant, Central Bank of Nigeria (CBN)-licensed payment processors and NDIC-insured microfinance institutions.
+
+### 6. KorpaBee Business Portal
+- **Targeted Reach**: Allows businesses, recruiters, landlords, and brands to target verified corps members by state, platoon, batch, gender, or career interests.
+- **Job & Ad Management**: Post job openings, launch targeted ad campaigns, track impressions, CTR, and applicant pipelines.
+
+---
+
+## Canonical URLs & Information Architecture
+- **Main Website**: https://korpabee.com/
+- **Waitlist & Registration**: https://korpabee.com/register
+- **Login Portal**: https://korpabee.com/login
+- **Business Portal**: https://business.korpabee.com/
+- **Privacy Policy**: https://korpabee.com/privacy
+- **Terms of Service**: https://korpabee.com/terms
+- **Disclaimer**: https://korpabee.com/disclaimer
+
+---
+
+## Contact & Technical Inquiries
+- **Support Email**: support@korpabee.com
+- **Official Website**: https://korpabee.com
+- **Social Media**:
+  - Twitter/X: https://x.com/korpabee
+  - Instagram: https://instagram.com/korpabee
+  - LinkedIn: https://linkedin.com/company/korpabee

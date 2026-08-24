@@ -3,7 +3,10 @@
 > KorpaBee is Nigeria's all-in-one social network, opportunity board, group savings (Ajo), housing match, and Place of Primary Assignment (PPA) directory built for NYSC corps members.
 
 ## Overview
-KorpaBee supports over 1 million Nigerian youth during their National Youth Service Corps (NYSC) service year — from orientation camp to Passing Out Parade (POP) and post-service transition.
+KorpaBee supports over 1 million Nigerian youth during their National Youth Service Corps (NYSC) service year — from orientation camp to Passing Out Parade (POP) and beyond.
+
+## Full Documentation & Specifications for AI
+- Full AI Specification: https://korpabee.com/llms-full.txt
 
 ## Core Features & Modules
 - **PPA Directory & Reviews**: Anonymous reviews, salary data, work culture, and relocation insights on Place of Primary Assignment employers across Nigeria.
@@ -21,6 +24,7 @@ KorpaBee supports over 1 million Nigerian youth during their National Youth Serv
 - Business Portal: https://business.korpabee.com/
 - Privacy Policy: https://korpabee.com/privacy
 - Terms of Service: https://korpabee.com/terms
+- Disclaimer: https://korpabee.com/disclaimer
 
 ## Target Audience
 - NYSC Corps Members across all 36 Nigerian states and FCT Abuja.
