@@ -121,8 +121,12 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import ScrollToTop from '@/components/ui/ScrollToTop.vue'
-// Legal disclaimer views
+
+onMounted(() => {
+  window.scrollTo(0, 0)
+})
 </script>
 
 <style scoped>
