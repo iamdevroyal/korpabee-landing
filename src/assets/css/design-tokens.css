@@ -1,0 +1,439 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   KORPABEE DESIGN SYSTEM TOKENS & UTILITIES
+   Inspired by Material 3 and Cupertino Mobile Designs (Flutter-like)
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Material 3 Dark Palette - Slate Sapphire/Navy theme */
+  --m3-background: #e7e8ec;
+  --m3-surface: #11142A;
+  --m3-surface-container-low: #15182F;
+  --m3-surface-container: #1A1E38;
+  --m3-surface-container-high: #222748;
+  --m3-surface-container-highest: #2D335E;
+
+  /* Primary Brand Color (Indigo) */
+  --m3-primary: #6366F1;
+  --m3-primary-container: rgba(99, 102, 241, 0.14);
+  --m3-on-primary: #FFFFFF;
+
+  /* Secondary Brand Color (Teal) */
+  --m3-secondary: #14B8A6;
+  --m3-secondary-container: rgba(20, 184, 166, 0.14);
+  --m3-on-secondary: #FFFFFF;
+
+  /* Accent Colors */
+  --m3-purple: #8B5CF6;
+  --m3-purple-container: rgba(139, 92, 246, 0.14);
+  --m3-orange: #F97316;
+  --m3-orange-container: rgba(249, 115, 22, 0.14);
+  --m3-yellow: #EAB308;
+  --m3-yellow-container: rgba(234, 179, 8, 0.14);
+  --m3-blue: #3B82F6;
+  --m3-blue-container: rgba(59, 130, 246, 0.14);
+
+  /* Status Colors */
+  --m3-error: #F43F5E;
+  --m3-error-container: rgba(244, 63, 94, 0.12);
+  --m3-success: #10B981;
+  --m3-success-container: rgba(16, 185, 129, 0.12);
+  --m3-warning: #F59E0B;
+  --m3-warning-container: rgba(245, 158, 11, 0.12);
+
+  /* Typography Colors */
+  --m3-on-surface: #F8FAFC;
+  --m3-on-surface-variant: #A8A4C4;
+
+  /* Borders and Scrims */
+  --m3-outline: rgba(255, 255, 255, 0.08);
+  --m3-outline-variant: rgba(255, 255, 255, 0.04);
+  --m3-scrim: rgba(6, 7, 18, 0.78);
+
+  /* 8px Spacing Grid */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-xxl: 32px;
+
+  /* Corner Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Typography Scale (Material 3 style) */
+  --type-display: 800 32px/1.2 'Outfit', sans-serif;
+  --type-headline: 800 22px/1.3 'Outfit', sans-serif;
+  --type-title-lg: 700 18px/1.4 'Outfit', sans-serif;
+  --type-title-md: 700 15px/1.4 'Outfit', sans-serif;
+  --type-body-lg: 600 14px/1.5 'Inter', sans-serif;
+  --type-body-md: 500 13px/1.5 'Inter', sans-serif;
+  --type-label-lg: 700 12px/1.4 'Inter', sans-serif;
+  --type-label-md: 700 11px/1.4 'Inter', sans-serif;
+  --type-label-sm: 800 10px/1.4 'Inter', sans-serif;
+
+  /* Elevation (Stacked Soft Shadows) */
+  --elevation-1: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --elevation-2: 0 4px 8px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.3);
+  --elevation-3: 0 12px 24px rgba(0, 0, 0, 0.3), 0 6px 8px rgba(0, 0, 0, 0.35);
+  --elevation-sheet: 0 -8px 32px rgba(0, 0, 0, 0.5);
+
+  /* Tactile / Motion Tokens */
+  --duration-short: 150ms;
+  --duration-medium: 250ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --interactive-scale: scale(0.97);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   REUSABLE MOBILE-FIRST FLUTTER BOTTOM SHEET LAYOUTS
+   ───────────────────────────────────────────────────────────────────────── */
+
+.flutter-sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--m3-scrim);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: flex-end;
+  /* Bottom sheet on mobile */
+  justify-content: center;
+  transition: opacity var(--duration-medium) var(--ease-out);
+}
+
+.flutter-sheet-card {
+  width: 100%;
+  background-color: var(--m3-surface);
+  border-top-left-radius: var(--radius-xl);
+  border-top-right-radius: var(--radius-xl);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border: 1px solid var(--m3-outline);
+  border-bottom: none;
+  box-shadow: var(--elevation-sheet);
+  display: flex;
+  flex-direction: column;
+  max-height: 94vh;
+  position: relative;
+  transform: translateY(100%);
+  animation: flutter-slide-up var(--duration-medium) var(--ease-out) forwards;
+}
+
+@keyframes flutter-slide-up {
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Desktop: Restore centered modal layout smoothly on wider viewports */
+@media (min-width: 768px) {
+  .flutter-sheet-overlay {
+    align-items: center;
+    padding: 24px;
+  }
+
+  .flutter-sheet-card {
+    max-width: 440px;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--m3-outline);
+    max-height: 85vh;
+    transform: scale(0.92) translateY(24px);
+    animation: flutter-pop var(--duration-medium) var(--ease-out) forwards;
+  }
+
+  @keyframes flutter-pop {
+    to {
+      transform: scale(1) translateY(0);
+    }
+  }
+}
+
+/* iOS/Android style drag handle at top center of bottom sheets */
+.flutter-sheet-handle {
+  width: 40px;
+  height: 4.5px;
+  background-color: rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-full);
+  align-self: center;
+  margin-top: 10px;
+  margin-bottom: 2px;
+  flex-shrink: 0;
+}
+
+/* Standard Header inside modal */
+.flutter-sheet-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-bottom: 1px solid var(--m3-outline);
+  flex-shrink: 0;
+}
+
+.flutter-sheet-header-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.flutter-sheet-header-icon.primary {
+  background-color: var(--m3-primary-container);
+  color: var(--m3-primary);
+}
+
+.flutter-sheet-header-icon.secondary {
+  background-color: var(--m3-secondary-container);
+  color: var(--m3-secondary);
+}
+
+.flutter-sheet-header-icon.purple {
+  background-color: var(--m3-purple-container);
+  color: var(--m3-purple);
+}
+
+.flutter-sheet-header-icon.orange {
+  background-color: var(--m3-orange-container);
+  color: var(--m3-orange);
+}
+
+.flutter-sheet-header-icon.blue {
+  background-color: var(--m3-blue-container);
+  color: var(--m3-blue);
+}
+
+.flutter-sheet-title-group {
+  flex: 1;
+  min-width: 0;
+}
+
+.flutter-sheet-title {
+  margin: 0;
+  font: var(--type-title-lg);
+  color: var(--m3-on-surface);
+  letter-spacing: -0.2px;
+}
+
+.flutter-sheet-subtitle {
+  margin: 2px 0 0;
+  font: var(--type-label-md);
+  color: var(--m3-on-surface-variant);
+}
+
+.flutter-sheet-close {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background-color: var(--m3-surface-container-high);
+  border: none;
+  color: var(--m3-on-surface-variant);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--duration-short) var(--ease-out);
+  flex-shrink: 0;
+}
+
+.flutter-sheet-close:hover {
+  background-color: var(--m3-surface-container-highest);
+  color: var(--m3-on-surface);
+}
+
+.flutter-sheet-close:active {
+  transform: var(--interactive-scale);
+}
+
+/* Modal Scrollable Body */
+.flutter-sheet-body {
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+}
+
+.flutter-sheet-body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Pinned Sticky Footer buttons (Flutter-style) */
+.flutter-sheet-footer {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-xl) var(--spacing-xl);
+  border-top: 1px solid var(--m3-outline);
+  background-color: var(--m3-surface);
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+/* Smart device safe-area adjustment */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .flutter-sheet-footer {
+    padding-bottom: calc(var(--spacing-xl) + env(safe-area-inset-bottom));
+  }
+}
+
+/* TextFormField styling - Flutter Material-3 style input fields */
+.flutter-text-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  width: 100%;
+}
+
+.flutter-text-field-label {
+  font: var(--type-label-sm);
+  color: var(--m3-on-surface-variant);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.flutter-text-field-input-wrap {
+  display: flex;
+  align-items: center;
+  background-color: var(--m3-surface-container-low);
+  border: 1.5px solid var(--m3-outline);
+  border-radius: var(--radius-md);
+  transition: all var(--duration-short) var(--ease-out);
+  width: 100%;
+  overflow: hidden;
+}
+
+.flutter-text-field-input-wrap:focus-within {
+  border-color: var(--m3-primary);
+  background-color: var(--m3-surface-container-high);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.flutter-text-field-input-wrap.error {
+  border-color: var(--m3-error);
+}
+
+.flutter-text-field-input-wrap.success {
+  border-color: var(--m3-success);
+}
+
+.flutter-text-field-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 13px 16px;
+  font: var(--type-body-lg);
+  color: var(--m3-on-surface);
+  font-family: inherit;
+}
+
+.flutter-text-field-input::placeholder {
+  color: var(--m3-on-surface-variant);
+  opacity: 0.5;
+}
+
+/* Material 3 / Cupertino buttons */
+.flutter-btn {
+  height: 48px;
+  border-radius: var(--radius-full);
+  font: var(--type-body-lg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  border: none;
+  transition: all var(--duration-short) var(--ease-out);
+  text-decoration: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.flutter-btn-primary {
+  flex: 1;
+  background: linear-gradient(135deg, var(--m3-primary), #4F46E5);
+  color: var(--m3-on-primary);
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
+}
+
+.flutter-btn-primary:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+}
+
+.flutter-btn-primary:active:not(:disabled) {
+  transform: var(--interactive-scale);
+}
+
+.flutter-btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.flutter-btn-secondary {
+  padding: 0 var(--spacing-xl);
+  background-color: transparent;
+  border: 1.5px solid var(--m3-outline);
+  color: var(--m3-on-surface-variant);
+  font-weight: 700;
+}
+
+.flutter-btn-secondary:hover {
+  background-color: var(--m3-surface-container-low);
+  color: var(--m3-on-surface);
+}
+
+.flutter-btn-secondary:active {
+  transform: var(--interactive-scale);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   FLUTTER SHIMMER PLACEHOLDER EFFECT
+   ───────────────────────────────────────────────────────────────────────── */
+.flutter-shimmer {
+  background: linear-gradient(90deg,
+      var(--m3-surface-container) 25%,
+      var(--m3-surface-container-high) 50%,
+      var(--m3-surface-container) 75%);
+  background-size: 200% 100%;
+  animation: flutter-shimmer-loop 1.5s infinite linear;
+}
+
+@keyframes flutter-shimmer-loop {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Spinners */
+.flutter-spin {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px.5 solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: var(--radius-full);
+  animation: flutter-spin-loop 0.7s linear infinite;
+}
+
+@keyframes flutter-spin-loop {
+  to {
+    transform: rotate(360deg);
+  }
+}

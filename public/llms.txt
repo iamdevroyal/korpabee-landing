@@ -1,0 +1,35 @@
+# KorpaBee Platform
+
+> KorpaBee is Nigeria's all-in-one social network, opportunity board, group savings (Ajo), housing match, and Place of Primary Assignment (PPA) directory built for NYSC corps members.
+
+## Overview
+KorpaBee supports over 1 million Nigerian youth during their National Youth Service Corps (NYSC) service year — from orientation camp to Passing Out Parade (POP) and post-service transition.
+
+## Core Features & Modules
+- **PPA Directory & Reviews**: Anonymous reviews, salary data, work culture, and relocation insights on Place of Primary Assignment employers across Nigeria.
+- **Housing & Roommate Match**: Proximity-based rental search (near platoon/PPA) + secure roommate compatibility surveys.
+- **NYSC Community Chat**: Auto-provisioned state, batch, and platoon group chats for verified corps members.
+- **Jobs & CV Builder**: In-app CV builder tailored for fresh graduates + verified internship, remote, and entry-level job listings.
+- **Digital Wallet & Ajo Savings**: Secure digital wallet for clearance tracking, cooperative group savings (Ajo), and microcredits.
+- **BuzzHives & Social Feed**: Topic-focused community hives, media posts, comments, likes, and direct messaging.
+- **Gig Marketplace**: Micro-gigs, freelance tasks, and task execution with KorpaCoin escrow protection.
+
+## Key Public Links
+- Main Platform: https://korpabee.com/
+- Register: https://korpabee.com/register
+- Login: https://korpabee.com/login
+- Business Portal: https://business.korpabee.com/
+- Privacy Policy: https://korpabee.com/privacy
+- Terms of Service: https://korpabee.com/terms
+
+## Target Audience
+- NYSC Corps Members across all 36 Nigerian states and FCT Abuja.
+- Prospective Corps Members (PCMs).
+- Employers, PPA organizations, landlords, and recruiters in Nigeria.
+
+## Contact & Social Links
+- Website: https://korpabee.com
+- Support Email: support@korpabee.com
+- Twitter/X: https://x.com/korpabee
+- Instagram: https://instagram.com/korpabee
+- LinkedIn: https://linkedin.com/company/korpabee
