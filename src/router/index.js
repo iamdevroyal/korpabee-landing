@@ -46,6 +46,17 @@ const routes = [
     }
   },
   {
+    path: '/about',
+    name: 'about',
+    component: () => import('@/views/AboutPage.vue'),
+    meta: {
+      title: 'About KorpaBee — The All-in-One NYSC Platform',
+      description: 'Learn how KorpaBee powers the Nigerian service year with community feeds, verified PPA reviews, housing & roommates, jobs, AI career tools, and gamified savings.',
+      keywords: 'About KorpaBee, NYSC App, Corps Members Nigeria, PPA Reviews, Allawee Manager, NYSC Housing, Corper Community',
+      canonical: 'https://korpabee.com/about'
+    }
+  },
+  {
     path: '/competitors',
     alias: '/competitive-landscape',
     name: 'competitors',

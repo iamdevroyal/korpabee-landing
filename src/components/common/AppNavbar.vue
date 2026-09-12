@@ -25,8 +25,8 @@
       <nav class="hidden md:flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-[#1f1635]/70">
         <a @click.prevent="navigate('home')" href="#home"
           class="px-3 py-1.5 rounded-lg hover:bg-[#3c0ca0]/8 hover:text-[#3c0ca0] transition-all duration-200 cursor-pointer">Home</a>
-        <a @click.prevent="navigate('about')" href="#about"
-          class="px-3 py-1.5 rounded-lg hover:bg-[#3c0ca0]/8 hover:text-[#3c0ca0] transition-all duration-200 cursor-pointer">About</a>
+        <router-link to="/about"
+          class="px-3 py-1.5 rounded-lg hover:bg-[#3c0ca0]/8 hover:text-[#3c0ca0] transition-all duration-200 cursor-pointer">About</router-link>
         <a @click.prevent="navigate('features')" href="#features"
           class="px-3 py-1.5 rounded-lg hover:bg-[#3c0ca0]/8 hover:text-[#3c0ca0] transition-all duration-200 cursor-pointer">Features</a>
         <a @click.prevent="navigate('contact')" href="#contact"
@@ -84,8 +84,8 @@
         <nav class="flex flex-col gap-1 mb-4">
           <a @click.prevent="navigate('home'); mobileMenuOpen = false" href="#home"
             class="text-sm font-bold text-[#1f1635] px-3 py-2.5 rounded-xl hover:bg-[#3c0ca0]/8 hover:text-[#3c0ca0] transition-all cursor-pointer">Home</a>
-          <a @click.prevent="navigate('about'); mobileMenuOpen = false" href="#about"
-            class="text-sm font-bold text-[#1f1635] px-3 py-2.5 rounded-xl hover:bg-[#3c0ca0]/8 hover:text-[#3c0ca0] transition-all cursor-pointer">About</a>
+          <router-link to="/about" @click="mobileMenuOpen = false"
+            class="text-sm font-bold text-[#1f1635] px-3 py-2.5 rounded-xl hover:bg-[#3c0ca0]/8 hover:text-[#3c0ca0] transition-all cursor-pointer">About</router-link>
           <a @click.prevent="navigate('features'); mobileMenuOpen = false" href="#features"
             class="text-sm font-bold text-[#1f1635] px-3 py-2.5 rounded-xl hover:bg-[#3c0ca0]/8 hover:text-[#3c0ca0] transition-all cursor-pointer">Features</a>
           <a @click.prevent="navigate('contact'); mobileMenuOpen = false" href="#contact"
