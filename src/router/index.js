@@ -44,6 +44,18 @@ const routes = [
       keywords: 'KorpaBee Disclaimer, Financial Disclaimer, PPA Review Disclaimer',
       canonical: 'https://korpabee.com/disclaimer'
     }
+  },
+  {
+    path: '/competitors',
+    alias: '/competitive-landscape',
+    name: 'competitors',
+    component: () => import('@/views/CompetitorPage.vue'),
+    meta: {
+      title: 'KorpaBee vs The Alternatives — Competitive Intelligence & Ecosystem Landscape',
+      description: 'See how KorpaBee compares across social networking, jobs, marketplaces, housing, events, finance, and career development for Nigerian NYSC corps members.',
+      keywords: 'KorpaBee Competitors, KorpaBee vs Kopaville, WorkDone, Headstart, Hafrik, NaijaConnect, Campora, Gaji, CampusLink, Fuzu, NYSC Ecosystem',
+      canonical: 'https://korpabee.com/competitors'
+    }
   }
 ]
 
