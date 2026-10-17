@@ -20,34 +20,60 @@
           
           <!-- Left Column (Mockup Logo, Description, Connect Features) -->
           <div class="lg:col-span-4 space-y-6">
-            <!-- Brand Badge -->
-            <div class="inline-flex items-center gap-2 bg-[#3c0ca0]/10 border border-[#3c0ca0]/20 text-[#3c0ca0] text-[10px] font-extrabold uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-sm hover:scale-105 transition-transform duration-300">
-              <span class="w-2 h-2 rounded-full bg-[#3c0ca0] animate-ping"></span>
-              Connect. Grow. Thrive.
+            <!-- Hero Heading & CTA Container with Walking Corper behind -->
+            <div class="relative overflow-visible">
+              <!-- Animated Walking Corper behind the text -->
+              <WalkingCorper />
+
+              <!-- Text Content (relative z-10 so it sits cleanly above the walking corper) -->
+              <div class="relative z-10 space-y-6 pointer-events-auto">
+                <!-- Brand Badge -->
+                <div class="inline-flex items-center gap-2 bg-[#3c0ca0]/10 border border-[#3c0ca0]/20 text-[#3c0ca0] text-[10px] font-extrabold uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-sm hover:scale-105 transition-transform duration-300">
+                  <span class="w-2 h-2 rounded-full bg-[#3c0ca0] animate-ping"></span>
+                  Connect. Grow. Thrive.
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="text-4xl sm:text-5xl font-black tracking-tight leading-none text-[#1f1635]">
+                  Reimagine Your Service Year<br />
+                  <span class="shimmer-text">Connect Faster, Serve Better.</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-sm sm:text-base text-navy-800 leading-relaxed max-w-sm">
+                  All-in-one social, opportunity, and lifestyle platform built to power your service year — from camp to POP and beyond.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-wrap gap-4 pt-2">
+                  <button
+                    @click="openWaitlistModal"
+                    class="bg-gradient-to-r from-[#3c0ca0] to-[#5e32c7] hover:from-[#2d0979] hover:to-[#3c0ca0] text-white font-extrabold px-7 py-3.5 rounded-2xl text-xs sm:text-sm tracking-wide shadow-lg shadow-[#3c0ca0]/25 hover:shadow-xl hover:shadow-[#3c0ca0]/35 hover:-translate-y-0.5 active:scale-[0.98] transition-all cursor-pointer flex items-center gap-2 group"
+                  >
+                    <span>Join our Waitlist</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <!-- Main Heading -->
-            <h1 class="text-4xl sm:text-5xl font-black tracking-tight leading-none text-[#1f1635]">
-              Reimagine Your Service Year<br />
-              <span class="shimmer-text">Connect Faster, Serve Better.</span>
-            </h1>
-
-            <!-- Subtitle -->
-            <p class="text-sm sm:text-base text-navy-800 leading-relaxed max-w-sm">
-              All-in-one social, opportunity, and lifestyle platform built to power your service year — from camp to POP and beyond.
-            </p>
-
-            <!-- CTA Buttons -->
-            <div class="flex flex-wrap gap-4 pt-2">
-              <button
-                @click="openWaitlistModal"
-                class="bg-gradient-to-r from-[#3c0ca0] to-[#5e32c7] hover:from-[#2d0979] hover:to-[#3c0ca0] text-white font-extrabold px-7 py-3.5 rounded-2xl text-xs sm:text-sm tracking-wide shadow-lg shadow-[#3c0ca0]/25 hover:shadow-xl hover:shadow-[#3c0ca0]/35 hover:-translate-y-0.5 active:scale-[0.98] transition-all cursor-pointer flex items-center gap-2 group"
+            <!-- Mobile App Visual Preview on small screens (above features list on mobile) -->
+            <div class="block lg:hidden flex justify-center py-6">
+              <div 
+                @mousemove="handleCardMouseMove($event, 14)"
+                @mouseleave="handleCardMouseLeave($event)"
+                class="w-[280px] sm:w-[310px] h-[560px] sm:h-[620px] bg-gradient-to-tr from-[#3c0ca0]/20 via-[#ab8df0]/10 to-[#3c0ca0]/30 rounded-[48px] p-3.5 shadow-[0_25px_60px_rgba(60,12,160,0.2)] relative border-4 border-[#e9e5f5] transition-all duration-500 overflow-hidden flex flex-col items-center justify-center transform-style-3d cursor-pointer"
               >
-                <span>Join our Waitlist</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
-              </button>
+                <div class="w-full h-full rounded-[36px] overflow-hidden border border-[#e9e5f5]/60 shadow-inner bg-white relative transform-style-3d">
+                  <img
+                    src="@/assets/mobile1.png"
+                    alt="KorpaBee Mobile App Preview"
+                    class="w-full h-full object-cover object-top select-none animate-sway transform-style-3d"
+                  />
+                </div>
+              </div>
             </div>
 
             <!-- Horizonal Features List -->
@@ -135,8 +161,8 @@
             </div>
           </div>
 
-          <!-- Center Column (Mobile App Visual Preview with 3D Tilt) -->
-          <div class="lg:col-span-4 flex justify-center py-4">
+          <!-- Center Column (Mobile App Visual Preview with 3D Tilt - Desktop only) -->
+          <div class="hidden lg:flex lg:col-span-4 justify-center py-4">
             <!-- Mobile Device Wrapper -->
             <div 
               @mousemove="handleCardMouseMove($event, 14)"
@@ -680,6 +706,7 @@ import { useInstallPrompt } from '@/composables/useInstallPrompt'
 import { useMouseSpotlight } from '@/composables/useMouseSpotlight'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 import AppNavbar from '@/components/common/AppNavbar.vue'
+import WalkingCorper from '@/components/common/WalkingCorper.vue'
 import AppFaqSection from '@/components/ui/AppFaqSection.vue'
 import ChatWidget from '@/components/ui/ChatWidget.vue'
 import ScrollToTop from '@/components/ui/ScrollToTop.vue'
