@@ -38,9 +38,16 @@ function getEcho() {
 
   const envHost = import.meta.env.VITE_REVERB_HOST
   let activeHost = envHost || '127.0.0.1'
+  let isTls = import.meta.env.VITE_REVERB_SCHEME === 'https'
+  let activePort = parseInt(import.meta.env.VITE_REVERB_PORT || '8085')
+
   if (typeof window !== 'undefined' && window.location?.hostname) {
     const host = window.location.hostname
-    if (host !== 'localhost' && host !== '127.0.0.1' && (!envHost || envHost === '127.0.0.1' || envHost === 'localhost')) {
+    if (host.endsWith('korpabee.com') || host.includes('pages.dev')) {
+      activeHost = 'api.korpabee.com'
+      activePort = 443
+      isTls = true
+    } else if (host !== 'localhost' && host !== '127.0.0.1' && (!envHost || envHost === '127.0.0.1' || envHost === 'localhost')) {
       activeHost = host
     }
   }
@@ -49,9 +56,9 @@ function getEcho() {
     broadcaster:       'reverb',
     key:               import.meta.env.VITE_REVERB_APP_KEY || 'korpabeekey123',
     wsHost:            activeHost,
-    wsPort:            parseInt(import.meta.env.VITE_REVERB_PORT || '8085'),
-    wssPort:           parseInt(import.meta.env.VITE_REVERB_PORT || '8085'),
-    forceTLS:          import.meta.env.VITE_REVERB_SCHEME === 'https',
+    wsPort:            activePort,
+    wssPort:           activePort,
+    forceTLS:          isTls,
     enabledTransports: ['ws', 'wss'],
     authEndpoint,
     auth: {

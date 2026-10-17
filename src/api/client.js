@@ -7,6 +7,9 @@ export function getApiBaseUrl() {
   }
   if (typeof window !== 'undefined' && window.location?.hostname) {
     const host = window.location.hostname
+    if (host.endsWith('korpabee.com') || host.includes('pages.dev')) {
+      return 'https://api.korpabee.com/api/v1'
+    }
     if (host !== 'localhost' && host !== '127.0.0.1') {
       return `http://${host}:8000/api/v1`
     }
