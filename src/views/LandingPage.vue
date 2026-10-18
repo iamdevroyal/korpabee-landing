@@ -28,10 +28,10 @@
               <!-- Text Content (relative z-10 so it sits cleanly above the walking corper) -->
               <div class="relative z-10 space-y-6 pointer-events-auto">
                 <!-- Brand Badge -->
-                <div class="inline-flex items-center gap-2 bg-[#3c0ca0]/10 border border-[#3c0ca0]/20 text-[#3c0ca0] text-[10px] font-extrabold uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-sm hover:scale-105 transition-transform duration-300">
+                <!-- <div class="inline-flex items-center gap-2 bg-[#3c0ca0]/10 border border-[#3c0ca0]/20 text-[#3c0ca0] text-[10px] font-extrabold uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-sm hover:scale-105 transition-transform duration-300">
                   <span class="w-2 h-2 rounded-full bg-[#3c0ca0] animate-ping"></span>
                   Connect. Grow. Thrive.
-                </div>
+                </div> -->
 
                 <!-- Main Heading -->
                 <h1 class="text-4xl sm:text-5xl font-black tracking-tight leading-none text-[#1f1635]">
