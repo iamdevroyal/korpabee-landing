@@ -708,7 +708,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useInstallPrompt } from '@/composables/useInstallPrompt'
 import { useMouseSpotlight } from '@/composables/useMouseSpotlight'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 import AppNavbar from '@/components/common/AppNavbar.vue'
@@ -720,7 +719,6 @@ import ScrollToTop from '@/components/ui/ScrollToTop.vue'
 const openModal = () => { openWaitlistModal() }
 const router = useRouter()
 const route = useRoute()
-const { promptInstall } = useInstallPrompt()
 const { handleCardMouseMove, handleCardMouseLeave } = useMouseSpotlight()
 const { initScrollReveal } = useScrollReveal()
 
@@ -773,17 +771,6 @@ const handleTallyMessage = (event) => {
 
 onMounted(() => {
   window.addEventListener('message', handleTallyMessage)
-  
-  // Automatically trigger install prompt on load if not already installed and not dismissed this session
-  setTimeout(() => {
-    try {
-      if (!sessionStorage.getItem('kb_install_dismissed')) {
-        promptInstall()
-      }
-    } catch {
-      promptInstall()
-    }
-  }, 1000)
 })
 
 onUnmounted(() => {
@@ -792,11 +779,8 @@ onUnmounted(() => {
 
 const webAppUrl = import.meta.env.VITE_WEB_APP_URL || 'https://web.korpabee.com'
 
-const handleRegisterClick = async () => {
-  const result = await promptInstall()
-  if (result !== 'dismissed' && result !== 'accepted') {
-    window.location.href = `${webAppUrl}/register`
-  }
+const handleRegisterClick = () => {
+  window.location.href = `${webAppUrl}/register`
 }
 
 const contactForm = ref({

@@ -116,7 +116,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useInstallPrompt } from '@/composables/useInstallPrompt'
 
 const webAppUrl = import.meta.env.VITE_WEB_APP_URL || 'https://web.korpabee.com'
 
@@ -127,21 +126,13 @@ const route = useRoute()
 const mobileMenuOpen = ref(false)
 const scrolled = ref(false)
 
-const { promptInstall } = useInstallPrompt()
-
-const handleRegisterClick = async () => {
-  const result = await promptInstall()
-  if (result !== 'dismissed' && result !== 'accepted') {
-    window.location.href = `${webAppUrl}/register`
-  }
+const handleRegisterClick = () => {
+  window.location.href = `${webAppUrl}/register`
 }
 
-const handleRegisterClickMobile = async () => {
+const handleRegisterClickMobile = () => {
   mobileMenuOpen.value = false
-  const result = await promptInstall()
-  if (result !== 'dismissed' && result !== 'accepted') {
-    window.location.href = `${webAppUrl}/register`
-  }
+  window.location.href = `${webAppUrl}/register`
 }
 
 const handleScroll = () => {
