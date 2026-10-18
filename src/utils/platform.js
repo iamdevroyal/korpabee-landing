@@ -63,7 +63,7 @@ export function isStandalone() {
 export function getInstallPlatform({ hasDeferredPrompt }) {
   if (isStandalone()) return 'installed';
   if (isIOS()) return 'ios';
-  if (isAndroid()) return hasDeferredPrompt ? 'android' : 'unsupported';
-  if (isDesktop()) return hasDeferredPrompt ? 'desktop' : 'unsupported';
-  return 'unsupported';
+  if (isAndroid()) return 'android';
+  if (isDesktop()) return 'desktop';
+  return 'desktop';
 }

@@ -150,7 +150,7 @@ import { useInstallPrompt } from '../../composables/useInstallPrompt';
 
 defineProps({
   appName: { type: String, default: 'KorpaBee' },
-  icon: { type: String, default: '/icons/apple-touch-icon-180.png' },
+  icon: { type: String, default: '/icon/ios/apple-touch-icon-180.png' },
 });
 
 const { isModalOpen, platform, dismissModal, completeInstall, deferredEvent } = useInstallPrompt();
@@ -161,35 +161,28 @@ const isComplete = ref(false);
 const showLaunchInstructions = ref(false);
 
 async function handleInstallClick() {
-  if (!deferredEvent.value) {
-    dismissModal('unsupported');
-    return;
+  if (deferredEvent.value) {
+    // Prompt the user with browser's native popup first
+    deferredEvent.value.prompt();
+    const choice = await deferredEvent.value.userChoice;
+    if (choice.outcome !== 'accepted') {
+      dismissModal('dismissed');
+      return;
+    }
   }
   
-  // Prompt the user with browser's native popup first
-  deferredEvent.value.prompt();
+  isInstalling.value = true;
+  progress.value = 0;
   
-  // Await user choice on the native popup before triggering the progress bar
-  const choice = await deferredEvent.value.userChoice;
-  
-  if (choice.outcome === 'accepted') {
-    isInstalling.value = true;
-    progress.value = 0;
-    
-    // Progress for 45 seconds (45000ms)
-    // Increment by 1 every 450ms
-    const interval = setInterval(() => {
-      progress.value += 1;
-      if (progress.value >= 100) {
-        clearInterval(interval);
-        isInstalling.value = false;
-        isComplete.value = true;
-      }
-    }, 450);
-  } else {
-    // If user canceled the native prompt, dismiss modal
-    dismissModal('dismissed');
-  }
+  // Increment progress smoothly to 100%
+  const interval = setInterval(() => {
+    progress.value += 2;
+    if (progress.value >= 100) {
+      clearInterval(interval);
+      isInstalling.value = false;
+      isComplete.value = true;
+    }
+  }, 100);
 }
 
 function handleContinueClick() {

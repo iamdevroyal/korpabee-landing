@@ -67,7 +67,23 @@ const routes = [
       keywords: 'KorpaBee Competitors, KorpaBee vs Kopaville, WorkDone, Headstart, Hafrik, NaijaConnect, Campora, Gaji, CampusLink, Fuzu, NYSC Ecosystem',
       canonical: 'https://korpabee.com/competitors'
     }
-  }
+  },
+  {
+    path: '/login',
+    name: 'login-redirect',
+    beforeEnter() {
+      const webAppUrl = import.meta.env.VITE_WEB_APP_URL || 'https://web.korpabee.com'
+      window.location.href = `${webAppUrl}/login`
+    }
+  },
+  {
+    path: '/register',
+    name: 'register-redirect',
+    beforeEnter() {
+      const webAppUrl = import.meta.env.VITE_WEB_APP_URL || 'https://web.korpabee.com'
+      window.location.href = `${webAppUrl}/register`
+    }
+  },
 ]
 
 const router = createRouter({

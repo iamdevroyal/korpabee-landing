@@ -45,16 +45,22 @@
                 </p>
 
                 <!-- CTA Buttons -->
-                <div class="flex flex-wrap gap-4 pt-2">
+                <div class="flex flex-wrap items-center gap-3.5 pt-2">
                   <button
-                    @click="openWaitlistModal"
+                    @click="handleRegisterClick"
                     class="bg-gradient-to-r from-[#3c0ca0] to-[#5e32c7] hover:from-[#2d0979] hover:to-[#3c0ca0] text-white font-extrabold px-7 py-3.5 rounded-2xl text-xs sm:text-sm tracking-wide shadow-lg shadow-[#3c0ca0]/25 hover:shadow-xl hover:shadow-[#3c0ca0]/35 hover:-translate-y-0.5 active:scale-[0.98] transition-all cursor-pointer flex items-center gap-2 group"
                   >
-                    <span>Join our Waitlist</span>
+                    <span>Get Started</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
                   </button>
+                  <!-- <button
+                    @click="openWaitlistModal"
+                    class="border border-[#3c0ca0]/25 hover:bg-[#3c0ca0]/5 text-[#3c0ca0] font-extrabold px-6 py-3.5 rounded-2xl text-xs sm:text-sm tracking-wide transition-all cursor-pointer"
+                  >
+                    Join Waitlist
+                  </button> -->
                 </div>
               </div>
             </div>
@@ -205,11 +211,11 @@
               <span class="block text-[10px] font-black tracking-widest text-[#3c0ca0] uppercase">GET THE APP</span>
               <div class="flex items-center gap-4">
                 <div class="flex flex-col gap-2.5">
-                  <button @click="openWaitlistModal" class="bg-black hover:bg-slate-900 border border-slate-800 text-white rounded-xl px-4 py-2.5 flex items-center gap-2.5 w-44 hover:scale-[1.02] shadow-md transition-all cursor-pointer">
+                  <button @click="handleRegisterClick" class="bg-black hover:bg-slate-900 border border-slate-800 text-white rounded-xl px-4 py-2.5 flex items-center gap-2.5 w-44 hover:scale-[1.02] shadow-md transition-all cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="w-6 h-6"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58-33.3-60.7 60.7 60.7 60.7 58-33.3c15.2-8.7 25.3-24.8 25.3-42.4s-10.1-33.7-25.3-42.4zM385.4 337.8L104.6 499l220.7-221.2 60.1 60z"/></svg>
                     <div class="text-left leading-tight"><span class="block text-[8px] opacity-70">GET IT ON</span><span class="block text-xs font-bold font-mono">Google Play</span></div>
                   </button>
-                  <button @click="openWaitlistModal" class="bg-black hover:bg-slate-900 border border-slate-800 text-white rounded-xl px-4 py-2.5 flex items-center gap-2.5 w-44 hover:scale-[1.02] shadow-md transition-all cursor-pointer">
+                  <button @click="handleRegisterClick" class="bg-black hover:bg-slate-900 border border-slate-800 text-white rounded-xl px-4 py-2.5 flex items-center gap-2.5 w-44 hover:scale-[1.02] shadow-md transition-all cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" class="w-6 h-6"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-48.4-19.2-77.5-19.2-37.9 0-82.5 25.2-108.6 63.8-54.8 81.3-13.8 221.3 38.7 302.2 26 38.3 57.2 81.4 97.4 79.9 38.6-1.5 53.2-25.7 100.7-25.7 47 0 60.5 24.3 100.7 23.5 40.6-.8 68.2-39.1 94.2-77.2 30.1-44.1 42.4-86.8 43-88.9-1.2-.5-81.2-31.2-81.4-123.6zM224.2 92c21.2-25.7 35.5-61.4 31.6-92-25.7 1-56.9 17.1-75.4 38.6-16.1 18.7-30.1 54.9-26.3 84.8 28.7 2.2 58.7-15.7 70.1-31.4z"/></svg>
                     <div class="text-left leading-tight"><span class="block text-[8px] opacity-70">Download on the</span><span class="block text-xs font-bold font-mono">App Store</span></div>
                   </button>
@@ -767,16 +773,29 @@ const handleTallyMessage = (event) => {
 
 onMounted(() => {
   window.addEventListener('message', handleTallyMessage)
+  
+  // Automatically trigger install prompt on load if not already installed and not dismissed this session
+  setTimeout(() => {
+    try {
+      if (!sessionStorage.getItem('kb_install_dismissed')) {
+        promptInstall()
+      }
+    } catch {
+      promptInstall()
+    }
+  }, 1000)
 })
 
 onUnmounted(() => {
   window.removeEventListener('message', handleTallyMessage)
 })
 
+const webAppUrl = import.meta.env.VITE_WEB_APP_URL || 'https://web.korpabee.com'
+
 const handleRegisterClick = async () => {
   const result = await promptInstall()
   if (result !== 'dismissed' && result !== 'accepted') {
-    router.push('/register')
+    window.location.href = `${webAppUrl}/register`
   }
 }
 

@@ -99,12 +99,14 @@
         </nav>
         <div class="h-px bg-[#e9e5f5] w-full mb-4"></div>
         <div class="flex flex-col gap-3">
-          <!-- <router-link to="/login" @click="mobileMenuOpen = false"
-            class="text-center text-sm font-bold text-[#3c0ca0] py-2.5 border border-[#3c0ca0]/20 rounded-xl hover:bg-[#3c0ca0]/5 transition-colors">Sign In</router-link> -->
-          <!-- <button @click="handleRegisterClickMobile"
+          <a :href="`${webAppUrl}/login`" @click="mobileMenuOpen = false"
+            class="text-center text-sm font-bold text-[#3c0ca0] py-2.5 border border-[#3c0ca0]/20 rounded-xl hover:bg-[#3c0ca0]/5 transition-colors cursor-pointer">
+            Sign In
+          </a>
+          <button @click="handleRegisterClickMobile"
             class="text-center text-sm font-bold bg-[#3c0ca0] text-white py-2.5 rounded-xl shadow-md shadow-[#3c0ca0]/20 hover:bg-[#2d0979] transition-colors cursor-pointer">
             Join Free
-          </button> -->
+          </button>
         </div>
       </div>
     </Transition>
@@ -115,6 +117,8 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useInstallPrompt } from '@/composables/useInstallPrompt'
+
+const webAppUrl = import.meta.env.VITE_WEB_APP_URL || 'https://web.korpabee.com'
 
 const emit = defineEmits(['open-modal'])
 
@@ -128,7 +132,7 @@ const { promptInstall } = useInstallPrompt()
 const handleRegisterClick = async () => {
   const result = await promptInstall()
   if (result !== 'dismissed' && result !== 'accepted') {
-    router.push('/register')
+    window.location.href = `${webAppUrl}/register`
   }
 }
 
@@ -136,7 +140,7 @@ const handleRegisterClickMobile = async () => {
   mobileMenuOpen.value = false
   const result = await promptInstall()
   if (result !== 'dismissed' && result !== 'accepted') {
-    router.push('/register')
+    window.location.href = `${webAppUrl}/register`
   }
 }
 
