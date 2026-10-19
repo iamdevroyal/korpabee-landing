@@ -780,7 +780,10 @@ onUnmounted(() => {
 const webAppUrl = import.meta.env.VITE_WEB_APP_URL || 'https://web.korpabee.com'
 
 const handleRegisterClick = () => {
-  window.location.href = `${webAppUrl}/register`
+  const urlParams = new URLSearchParams(window.location.search)
+  const ref = urlParams.get('ref') || urlParams.get('referrer') || sessionStorage.getItem('referrer_tag') || localStorage.getItem('referrer_tag')
+  const target = ref ? `${webAppUrl}/register?ref=${encodeURIComponent(ref)}` : `${webAppUrl}/register`
+  window.location.href = target
 }
 
 const contactForm = ref({
